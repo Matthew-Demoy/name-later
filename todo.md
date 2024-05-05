@@ -2,11 +2,18 @@
 Projects I want to explore / learn
     1. Express.js
     make branch with sql queries
-    2. GraphQL - https://19majkel94.github.io/type-graphql/ - add graphql for the user , pothos
+    2. GraphQL - https://19majkel94.github.io/type-graphql/ - add graphql for the user ,
+     pothos
+
+     subscriptions
+
+
+
     3. gRPC - have to services communicate
     4. Next.js 
     5. Mongo DB
     prisma orm (use schema/migrations, not orm)
+    tailwind css
 
 
 trpc

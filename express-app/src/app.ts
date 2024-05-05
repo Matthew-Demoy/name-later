@@ -2,6 +2,20 @@ import express, { NextFunction, Request, Response } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import swaggerSpec from './swagger';
 import { generateJwt, parseJwt, JwtPayload } from './jwt';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs } from './schema';
+import resolvers from './resolvers';
+
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: () => ({
+    users: {} as Record<string, string>,
+  }),
+});
+
+
 // Create an Express application
 const app = express();
 const port = 3000;
@@ -31,6 +45,8 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+server.applyMiddleware({ app, path: '/graphql' });
+
 app.use('/api', swaggerUI.serve, swaggerUI.setup(swaggerSpec, options));
 // Middleware function to set cache-control headers
 function setNoCache(req : Request, res : Response, next : NextFunction) {
@@ -43,7 +59,7 @@ function setNoCache(req : Request, res : Response, next : NextFunction) {
 app.use(setNoCache);
 // Mock database to store user information
 const users: { [username: string]: string } = {
-  "string" : "string"
+"string" : "string"
 };
 
 
