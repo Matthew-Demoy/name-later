@@ -12,6 +12,7 @@ Projects I want to explore / learn
     3. gRPC - have to services communicate
     4. Next.js 
     5. Mongo DB
+    apollo server - graphOS
     prisma orm (use schema/migrations, not orm)
     tailwind css
 
