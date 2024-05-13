@@ -3,13 +3,14 @@ import { useState } from "react"
 
 interface SearchBarProps {
     onSearch : (query: string) => void
+    initialValue : string;
 }
 
 const SearchBar = (props : SearchBarProps) => {
 
     const { darkMode } = useTheme();
     
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState(props.initialValue)
     const onSearch = (e: any) => {
         e.preventDefault()
         if(query === '') return
